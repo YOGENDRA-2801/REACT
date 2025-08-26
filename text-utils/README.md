@@ -7,19 +7,29 @@
 
 # Props
     0. module banate time yato extension .mjs rkh ya fir json file k config m kuch changes krne padnge
-    1. Function/Child k ander props ko change mat krna it should be read-only
-    2. PropTypes React core ka part nahi hai (React 15 se hata diya gaya tha), ab ise alag se install krke import krna pdta hai. 
-    3. PropTypes -- Used for typechecking + set required condition , defaultProps -- used to provide default value
+    1. Props (properties) are read-only data passed from parent to child components
+    2. PropTypes provide runtime type checking for props in development mode. 
+    3. Default props provide fallback values when props aren't passed from parent components.
+    4. As per v19 propTypes and defaultProps will be silently ignored hence use TS for typechecking+requiredValue & default params for fallback
 
 # Componet
     1. Component should be Cap-Case , 
 
 # OTHER
-    1. PC : http://localhost:3000 , Mobile : http://192.168.0.101:3000
+    1. PC : http://localhost:3000 , Mobile : http://192.168.0.103:3000
     2. setting > emet > include language -- to get HTML suggestion in JS add (javascript,javascriptreact) here
     3. When we give our app to some we don't give then node-module folder bcoz it is too heavy + it can be recreated using cmd npm install & (package & package-lock) hence we keep this in git ignore
     4. self-closing tag k last m / laga dena <--content--/> , dhyan rkhna about changes in HTML keywords name
     5. 'public' folder contains files that are public available when the project is build hence sensitive chize mt daalna
     6. npm run : for development ,  npm run build : for production
 
-# OTHER-2
+# state
+    0. (text || "") in if block it will return bool value else it returns true value [note - pahla true mila to dusra chk nhi karega]
+    1. State = component memory that causes re-renders when changed ; useState() = React Hook hai jo func component me state crt krne ke liye use hota h.
+    2. const [stateVariable, setStateVariable] = useState(initialValue) ; Never mutate directly + updates are asynchronous + Use func updates for prev state
+    3. stateVariable → current state value ; setStateVariable → function jo state ko update karega ; initialValue → state ki starting value
+    4. [stateVariable, setStateVariable] -- array destructuring → ek hi line me array ke elements ko variables me todh ke rakh lo. array of 2 variable
+
+# hooks
+
+# OTP

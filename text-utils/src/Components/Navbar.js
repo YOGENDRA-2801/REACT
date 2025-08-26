@@ -1,10 +1,31 @@
 import React from "react";
 
-export default function Navbar(props) {
-  const title = props.title || "Insert Title Here";
-  const about = props.about || "Insert About Here";
+export default function Navbar({
+  title = "Default Title",
+  about = "Default About",
+  landing,
+  mode,
+  toggleMode
+}) {
+  // param => props ; usage => props.title , props.about , props.landing
+  if (typeof title !== "string") {
+    console.warn("Navbar: title should be string");
+    title = "Insert Title"; // fallback -- like if number nikla to yah print hoga
+  }
+
+  if (typeof about !== "string") {
+    console.warn("Navbar: about should be string");
+    about = "Insert About";
+  }
+
+  if (landing === undefined) {
+    // React props me default case undefined hota hai agar parent ne pass nahi kiya.
+    console.warn("Landing page should have a title");
+    landing = "Landing Page";
+  }
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className={`navbar navbar-expand-lg navbar-${mode} bg-${mode}`}>
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           {title}
@@ -24,7 +45,7 @@ export default function Navbar(props) {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="/">
-                Home
+                {landing}
               </a>
             </li>
             <li className="nav-item">
@@ -33,21 +54,20 @@ export default function Navbar(props) {
               </a>
             </li>
           </ul>
-          <form className="d-flex">
+          <div className={`form-check form-switch text-${(mode==="light")?"dark":"light"}`}>
             <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
+              className="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckDefault"
+              onClick={toggleMode}
             />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+              Enable Dark Mode
+            </label>
+          </div>
         </div>
       </div>
     </nav>
   );
-
-  
 }
