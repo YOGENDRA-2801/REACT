@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar({
   title = "Default Title",
@@ -27,9 +28,9 @@ export default function Navbar({
   return (
     <nav className={`navbar navbar-expand-lg navbar-${mode} bg-${mode}`}>
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           {title}
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -44,14 +45,14 @@ export default function Navbar({
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
+              <Link className="nav-link active" aria-current="page" to="/">
                 {landing}
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <Link className="nav-link" to="/about">
                 {about}
-              </a>
+              </Link>
             </li>
           </ul>
           <div className={`form-check form-switch text-${(mode==="light")?"dark":"light"}`}>
