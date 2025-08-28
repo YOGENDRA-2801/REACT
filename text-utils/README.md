@@ -10,7 +10,8 @@
     1. Props (properties) are read-only data passed from parent to child components
     2. PropTypes provide runtime type checking for props in development mode. 
     3. Default props provide fallback values when props aren't passed from parent components.
-    4. As per v19 propTypes and defaultProps will be silently ignored hence use TS for typechecking+requiredValue & default params for fallback
+    4. As per v19 propTypes and defaultProps will be silently ignored 
+    5. Use TS for typechecking+requiredValue & default params ( in curly braces {--data--} ) for fallback value
 
 # Componet
     1. Component should be Cap-Case , 
@@ -29,7 +30,16 @@
     2. const [stateVariable, setStateVariable] = useState(initialValue) ; Never mutate directly + updates are asynchronous + Use func updates for prev state
     3. stateVariable → current state value ; setStateVariable → function jo state ko update karega ; initialValue → state ki starting value
     4. [stateVariable, setStateVariable] -- array destructuring → ek hi line me array ke elements ko variables me todh ke rakh lo. array of 2 variable
+    5. Bootstrap Alert Types: Danger/Error , Info , Success , Warning , ...
 
 # hooks
 
 # OTP
+    0. backgroundColor ko bootstrap wali property doge to wah kaam nahi krga bcoz CSS को actual color values चाहिए।
+
+    1. backgroung color of navbar & body 
+    2. style ka syntax like bina {} k kaam ku nahi kr rha 
+
+    3. true1 && tru2 && true3 = true3 ; false1 && any && any = false1 ; true1 && false2 && any = false2
+    4. null return kr skte ho but null p koi operation nahi kr skte 
+    5. Google Web-master
