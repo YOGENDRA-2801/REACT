@@ -1,11 +1,11 @@
 import './App.css';
 import Alert from './Components/Alert';
-import About from './Components/About';
+// import About from './Components/About';
 import Navbar from './Components/Navbar' ;
 import TextForm from './Components/TextForm';
 import React , {useState} from 'react'
 
-import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+// import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 
 function App() {
 
@@ -41,23 +41,25 @@ function App() {
       {/* <Alert alrtMsg="This is custom alert message"></Alert> */}
       <Alert alrtMsg={alert}/>
 
-      {/* <div className="container my-3">  */}
+      <div className="container my-3"> 
         {/* container -- predefined class in bootstrap , my-3 : y-axis m 3 ka margin set krta hai [example 2 line k bich m margin] */}
-        {/* <TextForm heading="Enter the text below to anlyze" mode={theme} toggleMode={chngTheme} displayAlert={showAlert}/> */}
-      {/* </div> */}
+        <TextForm heading="Enter the text below to anlyze" mode={theme} toggleMode={chngTheme} displayAlert={showAlert}/>
+      </div>
 
       {/* <About></About> */}
 
-      <Router>
-        <Routes>
-            <Route exact path="/about">
-              <About />
-            </Route>
-            <Route exact path="/">
-              <TextForm heading="Enter the text below to anlyze" mode={theme} toggleMode={chngTheme} displayAlert={showAlert}/>
-            </Route>
-          </Routes>
-      </Router>
+      {/* ----- ROUTER ----- */}
+      {/* <Router> */}
+      {/* Navbar yahan hamesha dikhega kyunki ye Routes ke bahar hai, but Router ke andar hai */}
+      {/* <Navbar title="Text Utils" about="About Us" landing="Home" mode={theme} toggleMode={chngTheme} />
+      <Alert alrtMsg={alert}/> */}
+      
+      {/* Routes sirf content change karega, navbar same rahega */}
+      {/* <Routes>
+        <Route path="/about" element={<About />} />
+        <Route path="/" element={<TextForm heading="Enter the text below to analyze" mode={theme} toggleMode={chngTheme} displayAlert={showAlert}/>} />
+      </Routes> */}
+    {/* </Router> */}
     </>
   );
 }

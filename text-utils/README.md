@@ -43,3 +43,9 @@
     3. true1 && tru2 && true3 = true3 ; false1 && any && any = false1 ; true1 && false2 && any = false2
     4. null return kr skte ho but null p koi operation nahi kr skte 
     5. Google Web-master
+
+# Router
+    1. Set-up :- npm install react-router-dom -->> import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom'; 
+    2. Router - (jo compo prmnt show krne h) > Routes > Route - <Route path="-" element={-} /> -->> <a href> chng to <Link to>
+    3. use 'exact' before 'path' in <Route> to disable partial matching (like user/about -- will goto user due to partial matching)
+    4. href="#" ya fir to="/"

@@ -36,7 +36,7 @@ export default function TextForm(props) {
   }
 
   const onBadlaoo = (event) => {
-    console.log("On change in text area"); 
+    // console.log("On change in text area"); 
     setText(event.target.value) ;
   }
 
