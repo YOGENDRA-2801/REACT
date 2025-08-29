@@ -18,7 +18,7 @@ function App() {
   const [theme, setTheme] = useState("light");
 
   const colors = {
-    light: { bg: "#f8f9fa", textarea: "#ffffff", border: "#dee2e6" },
+    light: { bg: "#e3f2fd", textarea: "#ffffff", border: "#90caf9" },
     dark: { bg: "#212529", textarea: "#343a40", border: "#495057" }
   };
 

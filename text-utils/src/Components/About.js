@@ -4,9 +4,9 @@ import React from "react";
 export default function About(props) {
 
   const myStyle = {
-    color: (props.mode==="light")?"#212529":"#f8f9fa",
+    color: (props.mode==="light")?"#212529":"#e3f2fd",
     backgroundColor: (props.mode==="light")?"#ffffff":"#343a40",
-    border: `2px solid ${(props.mode==="light")?"#dee2e6":"#495057"}`
+    border: `2px solid ${(props.mode==="light")?"#90caf9":"#495057"}`
   }
 
   /* const [myStyle, setMyStyle] = useState({
@@ -36,7 +36,7 @@ export default function About(props) {
   return (
     <>
       <div className="accordion container my-3" id="accordionExample">
-      <h1 className="my-3" style={{color: (props.mode==="light")?"#212529":"#f8f9fa"}}>ABOUT US</h1>
+      <h1 className="my-3" style={{color: (props.mode==="light")?"#212529":"#e3f2fd"}}>ABOUT US</h1>
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingOne">
             <button
