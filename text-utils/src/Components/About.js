@@ -1,12 +1,12 @@
 import React from "react";
 // import React, { useState } from "react";
 
-export default function About(mode) {
+export default function About(props) {
 
   const myStyle = {
-    color: (mode==="light")?"white":"black",
-    backgroundColor: (mode==="light")?"black":"white",
-    border: "2px solid none"
+    color: (props.mode==="light")?"#1a237e":"#e3f2fd",
+    backgroundColor: (props.mode==="light")?"#ffffff":"#283593",
+    border: `2px solid ${(props.mode==="light")?"#90caf9":"#3f51b5"}`
   }
 
   /* const [myStyle, setMyStyle] = useState({
@@ -36,7 +36,7 @@ export default function About(mode) {
   return (
     <>
       <div className="accordion container my-3" id="accordionExample">
-      <h1 className="my-3" style={{color: (mode==="light")?"white":"black"}}>ABOUT US</h1>
+      <h1 className="my-3" style={{color: (props.mode==="light")?"#1a237e":"#e3f2fd"}}>ABOUT US</h1>
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingOne">
             <button
@@ -130,11 +130,11 @@ export default function About(mode) {
           </div>
         </div>
       </div>
-      {/* <div className="container">
-        <button type="button" className="btn btn-primary" onClick={switchmode}>
+      <div className="container">
+        {/* <button type="button" className="btn btn-primary" onClick={switchmode}>
           {text}
-        </button>
-      </div> */}
+        </button> */}
+      </div>
     </>
   );
 }

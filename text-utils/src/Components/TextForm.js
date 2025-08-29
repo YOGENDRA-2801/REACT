@@ -8,7 +8,6 @@ export default function TextForm(props) {
   const upperCase = () => {
     if (text && typeof text === 'string') {
         let newText = text.toUpperCase();
-        // let newText = (text || "").toUpperCase();
         setText(newText);
       } else {
         console.log("Text is null or undefined");
@@ -33,10 +32,11 @@ export default function TextForm(props) {
   }
   const clrTxtAra = () => {
     setText("");
+    props.displayAlert("Text cleared", "info")
   }
 
   const onBadlaoo = (event) => {
-    // console.log("On change in text area"); 
+    // console.log("On every change in text area"); 
     setText(event.target.value) ;
   }
 
@@ -51,7 +51,11 @@ export default function TextForm(props) {
             rows="8"
             value={text}
             onChange={onBadlaoo}
-            style={ {backgroundColor:"#a8dadc" , color:"black"} }
+            style={ {
+              backgroundColor: props.colors[props.mode].textarea,
+              color: props.mode === "light" ? "black" : "white",
+              border: `2px solid ${props.colors[props.mode].border}`
+            } }
             ></textarea>
         </div>
         <button className="btn btn-danger mx-1 my-1" disabled={text===""} onClick={upperCase}>Convert To Uppercase</button>

@@ -14,15 +14,22 @@ import {
 } from "react-router-dom";
 
 function App() {
+
   const [theme, setTheme] = useState("light");
+
+  const colors = {
+    light: { bg: "#e3f2fd", textarea: "#ffffff", border: "#90caf9" },
+    dark: { bg: "#1a237e", textarea: "#283593", border: "#3f51b5" }
+  };
+
   const chngTheme = () => {
     if (theme === "light") {
       setTheme("dark");
-      document.body.style.backgroundColor = "#457b9d";
+      document.body.style.backgroundColor = colors.dark.bg ;
       showAlert("Dark Mode is Enabled", "success");
     } else {
       setTheme("light");
-      document.body.style.backgroundColor = "#ccc5b9";
+      document.body.style.backgroundColor = colors.light.bg ;
       showAlert("Light Mode is Enabled", "success");
     }
   };
@@ -82,6 +89,7 @@ function App() {
                 mode={theme}
                 toggleMode={chngTheme}
                 displayAlert={showAlert}
+                colors={colors}
               />
             }
           />
