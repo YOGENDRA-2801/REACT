@@ -33,6 +33,8 @@
     5. Bootstrap Alert Types: Danger/Error , Info , Success , Warning , ...
 
 # hooks
+1. /\s+/ -- yah new line character bhi handle krta hai ?
+2. NavLink , Link , a
 
 # OTP
     0. backgroundColor ko bootstrap wali property doge to wah kaam nahi krga bcoz CSS को actual color values चाहिए।
@@ -48,4 +50,4 @@
     1. Set-up :- npm install react-router-dom -->> import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom'; 
     2. Router - (jo compo prmnt show krne h) > Routes > Route - <Route path="-" element={-} /> -->> <a href> chng to <Link to>
     3. use 'exact' before 'path' in <Route> to disable partial matching (like user/about -- will goto user due to partial matching)
-    4. href="#" ya fir to="/"
+    4. href="#" ya fir to="#" se kya hota hai ?

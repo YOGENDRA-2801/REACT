@@ -1,12 +1,13 @@
 import React from "react";
 // import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar({
   title = "Default Title",
   about = "Default About",
   landing,
   mode,
-  toggleMode
+  toggleMode,
 }) {
   // param => props ; usage => props.title , props.about , props.landing
   if (typeof title !== "string") {
@@ -28,15 +29,15 @@ export default function Navbar({
   return (
     <nav className={`navbar navbar-expand-lg navbar-${mode} bg-${mode}`}>
       <div className="container-fluid">
-        {/* <Link className="navbar-brand" to="#">
+        <NavLink className="navbar-brand" to="/">
+          {title}
+        </NavLink>
+        {/* <Link className="navbar-brand" to="/">
           {title}
         </Link> */}
-        {/* <a className="navbar-brand" href="/">
+        {/* <Link className="navbar-brand" to="/">
           {title}
-        </a> */}
-        <a className="navbar-brand" href="#">
-          {title}
-        </a>
+        </Link> */}
         <button
           className="navbar-toggler"
           type="button"
@@ -51,17 +52,30 @@ export default function Navbar({
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              {/* <Link className="nav-link active" aria-current="page" to="/">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+                to="/home"
+              >
+                {landing}
+              </NavLink>
+              {/* <Link className="nav-link active" aria-current="page" to="/home">
                 {landing}
               </Link> */}
               {/* <a className="nav-link active" aria-current="page" href="/">
                 {landing}
               </a> */}
-              <a className="nav-link active" aria-current="page" href="#">
-                {landing}
-              </a>
             </li>
             <li className="nav-item">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+                to="/about"
+              >
+                {about}
+              </NavLink>
               {/* <Link className="nav-link" to="/about">
                 {about}
               </Link> */}
@@ -70,7 +84,11 @@ export default function Navbar({
               </a> */}
             </li>
           </ul>
-          <div className={`form-check form-switch text-${(mode==="light")?"dark":"light"}`}>
+          <div
+            className={`form-check form-switch text-${
+              mode === "light" ? "dark" : "light"
+            }`}
+          >
             <input
               className="form-check-input"
               type="checkbox"
@@ -78,8 +96,11 @@ export default function Navbar({
               id="flexSwitchCheckDefault"
               onClick={toggleMode}
             />
-            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
-              Enable Dark Mode
+            <label
+              className="form-check-label"
+              htmlFor="flexSwitchCheckDefault"
+            >
+              Toggle Theme
             </label>
           </div>
         </div>
