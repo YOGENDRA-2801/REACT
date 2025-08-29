@@ -18,8 +18,8 @@ function App() {
   const [theme, setTheme] = useState("light");
 
   const colors = {
-    light: { bg: "#e3f2fd", textarea: "#ffffff", border: "#90caf9" },
-    dark: { bg: "#1a237e", textarea: "#283593", border: "#3f51b5" }
+    light: { bg: "#f8f9fa", textarea: "#ffffff", border: "#dee2e6" },
+    dark: { bg: "#212529", textarea: "#343a40", border: "#495057" }
   };
 
   const chngTheme = () => {
