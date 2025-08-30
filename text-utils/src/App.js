@@ -19,7 +19,7 @@ function App() {
 
   const colors = {
     light: { bg: "#e3f2fd", textarea: "#ffffff", border: "#90caf9" },
-    dark: { bg: "#212529", textarea: "#343a40", border: "#495057" }
+    dark: { bg: "#457b9d", textarea: "#a8dadc", border: "#495057" }
   };
 
   const chngTheme = () => {

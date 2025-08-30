@@ -53,7 +53,7 @@ export default function TextForm(props) {
             onChange={onBadlaoo}
             style={ {
               backgroundColor: props.colors[props.mode].textarea,
-              color: props.mode === "light" ? "black" : "white",
+              color: "black",
               border: `2px solid ${props.colors[props.mode].border}`
             } }
             ></textarea>

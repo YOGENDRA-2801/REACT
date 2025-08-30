@@ -33,18 +33,15 @@
     5. Bootstrap Alert Types: Danger/Error , Info , Success , Warning , ...
 
 # hooks
-1. /\s+/ -- yah new line character bhi handle krta hai ?
-2. NavLink , Link , a
+    1. /\s+/ -- yah new line character bhi handle krta hai ?
+    2. NavLink , Link , a
+    3. style ka syntax like bina {} k kaam ku nahi kr rha 
 
 # OTP
     0. backgroundColor ko bootstrap wali property doge to wah kaam nahi krga bcoz CSS को actual color values चाहिए।
-
-    1. backgroung color of navbar & body 
-    2. style ka syntax like bina {} k kaam ku nahi kr rha 
-
-    3. true1 && tru2 && true3 = true3 ; false1 && any && any = false1 ; true1 && false2 && any = false2
-    4. null return kr skte ho but null p koi operation nahi kr skte 
-    5. Google Web-master
+    1. true1 && tru2 && true3 = true3 ; false1 && any && any = false1 ; true1 && false2 && any = false2
+    2. null return kr skte ho but null p koi operation nahi kr skte 
+    3. Google Web-master
 
 # Router
     1. Set-up :- npm install react-router-dom -->> import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom'; 

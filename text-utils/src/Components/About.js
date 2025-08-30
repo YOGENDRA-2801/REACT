@@ -5,7 +5,7 @@ export default function About(props) {
 
   const myStyle = {
     color: (props.mode==="light")?"#212529":"#e3f2fd",
-    backgroundColor: (props.mode==="light")?"#ffffff":"#343a40",
+    backgroundColor: (props.mode==="light")?"#ffffff":"#4a4a4a",
     border: `2px solid ${(props.mode==="light")?"#90caf9":"#495057"}`
   }
 
