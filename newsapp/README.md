@@ -10,6 +10,18 @@
     2. Sirf REACT_APP_ prefix wale variables React ke andar accessible hote hain. Restart app before use
     3. .env.development for development mode , .env for all environment , .env.production for production build
 
-# OTHER
+# SAWAAL
     1. ComponentDidMount -- 
     2. Class component k ander constructor kya kaam kr rha hai ? , hatane p bhi error nhi ? , use bhi class-properties hi ho rhi h , init krne k liye mene usko param m bhi nahi rkh 
+    3. constructor ka kaam kya hai , kaha use kre , relevance as per v19
+    4. array.map() in jsx
+    5. col-md-4
+
+# LIFECYCLE METHOD
+    1. componentDidMount()
+    2. render() 
+
+# JSX 
+    1. key = newsUrl => given array made from json data me article ko uniquely identify krne k liye kuch aur relevant tha nahi hence newsUrl use kiya
+
+# JS
