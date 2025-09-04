@@ -16,12 +16,19 @@
     3. constructor ka kaam kya hai , kaha use kre , relevance as per v19
     4. array.map() in jsx
     5. col-md-4
+    6. state ko constructor k ander ku dala
 
 # LIFECYCLE METHOD
     1. componentDidMount()
+        1.1 <News key="general" .../> :- key pass taki multiple news component ko uniquely identify kr sake nahi-to same component dekh k yah didMount usko load hi nai karega
     2. render() 
 
 # JSX 
     1. key = newsUrl => given array made from json data me article ko uniquely identify krne k liye kuch aur relevant tha nahi hence newsUrl use kiya
 
 # JS
+
+# LFM
+    1. React mein UI (user interface) sirf tab update hota hai jab component ka state ya props badalta hai. 
+    2. setState() is asynchronous method, when this.setState() is called too React state ko turant (immediately) update nahi karta. Woh is update ko schedule kar deta hai aur aapke function ka baaki code aage execute karne lagta hai.
+    3. this.props.xyz hamesha latest value dikhata hai, jabki this.xyz = props.xyz constructor me assign karne ke baad static ho jata hai.

@@ -1,72 +1,92 @@
 import React, { Component } from "react";
 import NewsItem from "./NewsItem";
+import PropTypes from 'prop-types'
+
+// topheadlines -- articles
+// topheadlines/sources -- sources
 
 export class News extends Component {
+
+  static defaultProps = {
+    country : "us",
+    category : "general"
+  }
+
+  static propTypes = {
+    country: PropTypes.string.isRequired ,
+    category: PropTypes.oneOf([
+      'business', 'entertainment', 'general', 
+      'health', 'science', 'sports', 'technology'
+    ]).isRequired
+  }
+
   constructor() {
     super();
     this.state = {
       article: [],
-      loading: false,
+      // loading: false,
       page: 1,
       totalResults: 0,
+      pageSize: 12,
+      /* 
+        Agar aap state ko initialize karte waqt props ka value use kar rahe ho:
+        constructor(props) { super(props); } 
+        props ka value state me daala
+      */
     };
   }
 
-  // "pageSize" = 12;
-  // "totalResults" = 60;
-  disabled = false;
-
   async componentDidMount() {
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=80f64c0432cc41cca042f8817bbbd5d5&page=${this.state.page}&pageSize=12`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=80f64c0432cc41cca042f8817bbbd5d5&page=${this.state.page}&pageSize=${this.state.pageSize}`;
     let data = await fetch(url);
     let parseData = await data.json();
     this.setState({
       article: parseData.articles,
-      loading: false,
       totalResults: parseData.totalResults,
     });
   }
 
   nextPage = async () => {
-    console.log("Next Page Button Function Started");
-    if (this.state.page + 1 >= Math.ceil(this.state.totalResults / 12)) {
-      this.disabled = true;
-    } else {
-      this.setState({
-        page: this.state.page + 1,
-      });
-      const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=80f64c0432cc41cca042f8817bbbd5d5&page=${this.state.page}&pageSize=12`;
-      let data = await fetch(url);
-      let parseData = await data.json();
-      this.setState({
-        article: parseData.articles,
-        loading: false,
-      });
+    const newPage = this.state.page + 1;
+    if (newPage > Math.ceil(this.state.totalResults / this.state.pageSize)) {
+      return;
     }
-
-    console.log("Next Page Button Function Ended");
-  };
-
-  previousPage = async () => {
-    console.log("Previous Page Button Function Started");
     this.setState({
-      page: this.state.page - 1,
+      page: newPage,
     });
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=80f64c0432cc41cca042f8817bbbd5d5&page=${this.state.page}&pageSize=12`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=80f64c0432cc41cca042f8817bbbd5d5&page=${newPage}&pageSize=${this.state.pageSize}`;
     let data = await fetch(url);
     let parseData = await data.json();
     this.setState({
       article: parseData.articles,
-      loading: false,
     });
-    console.log("Previous Page Button Function Ended");
+  };
+
+  previousPage = async () => {
+    const newPage = this.state.page - 1;
+    if (newPage < 1) {
+      return;
+    }
+    this.setState({
+      page: newPage,
+    });
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=80f64c0432cc41cca042f8817bbbd5d5&page=${newPage}&pageSize=${this.state.pageSize}`;
+    let data = await fetch(url);
+    let parseData = await data.json();
+    this.setState({
+      article: parseData.articles,
+    });
   };
 
   render() {
+    const isFirstPage = this.state.page <= 1;
+    const isLastPage =
+      this.state.page >=
+      Math.ceil(this.state.totalResults / this.state.pageSize);
     return (
       <>
         <div className="container my-3">
-          <h1>Top Headlines of the day</h1>
+          <h1 className="text-center" style={{margin: '30px 0px'}}>Top Headlines of the day</h1>
           <div className="row">
             {this.state.article.map((element) => {
               return (
@@ -74,6 +94,9 @@ export class News extends Component {
                   <NewsItem
                     title={element.title}
                     description={element.description}
+                    tarik={element.publishedAt} 
+                    source={element.source.name} 
+                    reporter={element.author}
                     imageUrl={
                       element.urlToImage
                         ? element.urlToImage
@@ -87,7 +110,7 @@ export class News extends Component {
           </div>
           <div className="d-flex justify-content-between">
             <button
-              disabled={this.state.page <= 1}
+              disabled={isFirstPage}
               type="button"
               className="btn btn-dark"
               onClick={this.previousPage}
@@ -98,7 +121,7 @@ export class News extends Component {
               type="button"
               className="btn btn-dark"
               onClick={this.nextPage}
-              disabled={this.disabled}
+              disabled={isLastPage}
             >
               Next Page &raquo;
             </button>
