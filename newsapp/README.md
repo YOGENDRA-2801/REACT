@@ -17,6 +17,7 @@
     4. array.map() in jsx
     5. col-md-4
     6. state ko constructor k ander ku dala
+    7. Different component load hone per constructor bhi dubara call hota hai ? 
 
 # LIFECYCLE METHOD
     1. componentDidMount()

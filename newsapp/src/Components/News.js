@@ -20,30 +20,32 @@ export class News extends Component {
     ]).isRequired
   }
 
-  constructor() {
-    super();
+  capitalize = (str) => str ? str[0].toUpperCase() + str.slice(1).toLowerCase() : '';
+
+  constructor(props) {
+    super(props);
     this.state = {
       article: [],
-      // loading: false,
       page: 1,
       totalResults: 0,
       pageSize: 12,
-      /* 
-        Agar aap state ko initialize karte waqt props ka value use kar rahe ho:
-        constructor(props) { super(props); } 
-        props ka value state me daala
-      */
     };
+    document.title = `Newsapp -- ${this.capitalize(this.props.category)}`
   }
 
-  async componentDidMount() {
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=80f64c0432cc41cca042f8817bbbd5d5&page=${this.state.page}&pageSize=${this.state.pageSize}`;
+  update = async (pageNumber) => {
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=80f64c0432cc41cca042f8817bbbd5d5&page=${pageNumber}&pageSize=${this.state.pageSize}`;
     let data = await fetch(url);
     let parseData = await data.json();
     this.setState({
       article: parseData.articles,
       totalResults: parseData.totalResults,
     });
+  }
+
+  async componentDidMount() {
+    const newPage = this.state.page ;
+    this.update(newPage) ;
   }
 
   nextPage = async () => {
@@ -54,12 +56,7 @@ export class News extends Component {
     this.setState({
       page: newPage,
     });
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=80f64c0432cc41cca042f8817bbbd5d5&page=${newPage}&pageSize=${this.state.pageSize}`;
-    let data = await fetch(url);
-    let parseData = await data.json();
-    this.setState({
-      article: parseData.articles,
-    });
+    this.update(newPage);
   };
 
   previousPage = async () => {
@@ -70,12 +67,7 @@ export class News extends Component {
     this.setState({
       page: newPage,
     });
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=80f64c0432cc41cca042f8817bbbd5d5&page=${newPage}&pageSize=${this.state.pageSize}`;
-    let data = await fetch(url);
-    let parseData = await data.json();
-    this.setState({
-      article: parseData.articles,
-    });
+    this.update(newPage) ;
   };
 
   render() {
@@ -86,7 +78,7 @@ export class News extends Component {
     return (
       <>
         <div className="container my-3">
-          <h1 className="text-center" style={{margin: '30px 0px'}}>Top Headlines of the day</h1>
+          <h2 className="text-center" style={{margin: '30px 0px'}}>Top {this.capitalize(this.props.category)} Category Headlines</h2>
           <div className="row">
             {this.state.article.map((element) => {
               return (

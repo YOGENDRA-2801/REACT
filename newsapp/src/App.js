@@ -13,7 +13,6 @@ export class App extends Component {
       <>
         {/* <NavBar/>
         <News country="us" category="sports"/> */}
-
         <Router>
           <NavBar/>
           <Routes>
