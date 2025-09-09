@@ -52,7 +52,9 @@ export class News extends Component {
 
   async componentDidMount() {
     const newPage = this.state.page;
+    this.props.setProgress(40)
     this.update(newPage);
+    this.props.setProgress(100)
   }
 
   /* Next Button function for going to next page 
