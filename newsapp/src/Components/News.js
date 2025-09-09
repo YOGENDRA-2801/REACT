@@ -36,6 +36,7 @@ export class News extends Component {
       page: 1,
       totalResults: 0,
       pageSize: 6,
+      loading: true
     };
     document.title = `Newsapp -- ${this.capitalize(this.props.category)}`;
   }
@@ -43,6 +44,7 @@ export class News extends Component {
   update = async (pageNumber) => {
     this.props.setProgress(10);
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${pageNumber}&pageSize=${this.state.pageSize}`;
+    this.setState({ loading: true });
     let data = await fetch(url);
     this.props.setProgress(30);
     let parseData = await data.json();
@@ -50,6 +52,7 @@ export class News extends Component {
     this.setState({
       article: parseData.articles,
       totalResults: parseData.totalResults,
+      loading: false
     });
     this.props.setProgress(100);
   };
