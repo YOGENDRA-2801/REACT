@@ -93,7 +93,7 @@ export class News extends Component {
     let data = await fetch(url);
     let parseData = await data.json();
     this.setState({
-      article: this.state.article.concat(parseData.articles)
+      article: this.state.article.concat(parseData.articles),
     });
   };
 
@@ -106,17 +106,20 @@ export class News extends Component {
     */
     return (
       <>
-        <div className="container my-3">
+        
           <h2 className="text-center" style={{ margin: "30px 0px" }}>
             Top {this.capitalize(this.props.category)} Category Headlines
           </h2>
-          <div className="row">
-            <InfiniteScroll
-              dataLength={this.state.totalResults}
-              next={this.fetchMoreData}
-              hasMore={this.state.article.length !== this.state.totalResults}
-              loader={<Spinner></Spinner>}
-            >
+
+          <InfiniteScroll
+            dataLength={this.state.article.length}
+            next={this.fetchMoreData}
+            hasMore={this.state.article.length !== this.state.totalResults}
+            loader={<Spinner></Spinner>}
+          >
+            
+            <div className="container"> {/* niche row class k sath daal rha tha to kaam nahi kr rha tha */}
+            <div className="row ">
               {this.state.article.map((element) => {
                 return (
                   <div className="col-md-4" key={element.url}>
@@ -135,10 +138,9 @@ export class News extends Component {
                     />
                   </div>
                 );
-              })}
-            </InfiniteScroll>
-          </div>
-
+              })}{" "}
+            </div></div>
+          </InfiniteScroll>
           {/* ----- BUTTON BASED NAVIGATION FOR MORE NEWS -----
             <div className="d-flex justify-content-between">
               <button
@@ -159,7 +161,7 @@ export class News extends Component {
               </button>
             </div> 
           */}
-        </div>
+        
       </>
     );
   }
