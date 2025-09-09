@@ -33,3 +33,4 @@
     1. React mein UI (user interface) sirf tab update hota hai jab component ka state ya props badalta hai. 
     2. setState() is asynchronous method, when this.setState() is called too React state ko turant (immediately) update nahi karta. Woh is update ko schedule kar deta hai aur aapke function ka baaki code aage execute karne lagta hai.
     3. this.props.xyz hamesha latest value dikhata hai, jabki this.xyz = props.xyz constructor me assign karne ke baad static ho jata hai.
+    4. If API ki limit khtm ho gayi to wah news article nahi dega hence array khalu rh jayega hence length property undefined show hogi

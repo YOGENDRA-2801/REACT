@@ -5,9 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
 
 export class App extends Component {
-
-  apiKey = "80f64c0432cc41cca042f8817bbbd5d5"
-  // apiKey = process.env.REACT_APP_API_KEY ;
+  
+  apiKey = process.env.REACT_APP_API_KEY ;
 
   constructor(props) {
     super(props);
