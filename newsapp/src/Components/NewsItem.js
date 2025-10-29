@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 
 export class NewsItem extends Component {
   render() {
@@ -17,8 +17,8 @@ export class NewsItem extends Component {
               <p className="card-text">{description}</p>
               <p className="card-text">
                 <small className="text-muted">
-                  By {reporter ? reporter : "Unknown"} on{" "}
-                  {new Date(tarik).toGMTString()}
+                  By {reporter ? reporter : "Unknown"} on {" "}
+                  {(new Date(tarik)).toGMTString()}
                 </small>
               </p>
               <a
