@@ -1,4 +1,3 @@
-import React from "react";
 // import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
@@ -35,9 +34,9 @@ export default function Navbar({
         {/* <Link className="navbar-brand" to="/">
           {title}
         </Link> */}
-        {/* <Link className="navbar-brand" to="/">
+        {/* <a className="navbar-brand" href="/">
           {title}
-        </Link> */}
+        </a> */}
         <button
           className="navbar-toggler"
           type="button"

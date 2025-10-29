@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 
 export default function TextForm(props) {
 
@@ -68,7 +68,7 @@ export default function TextForm(props) {
         <h2>Your text summary</h2>
         <p>Word Count : {text.trim() === "" ? 0 : text.trim().split(/\s+/).length} </p> 
         <p>Character Count : {text.length}</p>
-        <p>Reading Time :  {0.005 * (text.split(/\s+/).filter(word => word !== "").length)}  minutes</p>
+        <p>Reading Time :  {0.005 * ((text || "").split(/\s+/).filter(word => word !== "").length)}  minutes</p>
         <h3>Preview</h3>
         <p>{text.length>0 ? text : "Enter something in textbox to preview it here"}</p>
       </div>
@@ -79,6 +79,9 @@ export default function TextForm(props) {
 
 // "".split(" ") // [""] - length 1 ❌
 // "   Y ".split(" ") // ["", "", "", "", "Y", ""] - length 6 ❌
+    // Jab space se split karte ho:
+    // - **Space से पहले** ka part = ek element
+    // - **Space के बाद** ka part = ek element
+
 // /pattern/flags :- Starting / , \s+ - Pattern , Ending / , Flags - Optional (i, g, m ...)
 // Filter ek array method hai jo: Condition check karta hai har element pe , True wale elements ko rakhta hai , False wale elements ko hata deta hai , New array return karta hai
-// 
