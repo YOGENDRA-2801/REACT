@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 
-const uri = "mongodb://localhost:27017/user";
+const uri = "mongodb://localhost:27017/inotebook"; 
+// db mene pahle-se Mongo-Compass m create nahi ki thi 
+// db ka naam mene code m dala "pahle" else string to bus ...27017/ hi thi
 
 const connectToMongoose = () => {
     mongoose.connect(uri)
